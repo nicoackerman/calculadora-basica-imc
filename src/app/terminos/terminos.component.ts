@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terminos',
@@ -9,4 +10,23 @@ import { Component } from '@angular/core';
 })
 export class TerminosComponent {
 
+  constructor( private router: Router) {}
+
+
+
+
+  De_acuerdo() {
+
+    this.router.navigateByUrl("/datos");
+  }
+
+  no_de_acuerdo(){
+
+    this.router.navigateByUrl("/calculadora");
+  }
+ 
+
 }
+
+
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calculadora IMC</title>
+</head>
+<body class="flex items-center justify-center h-screen bg-[#d7c1b6]">
+    
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96 text-center relative">
+        <h2 class="text-2xl font-semibold mb-6">Calculadora IMC</h2>
+
+        <div class="space-y-4 mb-6">
+            <div>
+                <label class="block text-left font-medium text-gray-700">Peso (kg)</label>
+                <input type="number" [(ngModel)]="peso" placeholder="80"  min="0" class="w-full border-2 border-gray-300 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+            </div>
+            <div>
+                <label class="block text-left font-medium text-gray-700">Altura (cm)</label>
+                <input type="number" [(ngModel)]="altura" placeholder="180" min="0" class="w-full border-2 border-gray-300 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+            </div>
+        </div>
+
+        <div class="flex justify-around mb-6">
+            <button (click)="reiniciar()" class="bg-[#B98357] text-black font-semibold py-2 px-4 rounded-md hover:bg-[#8b5439] transition-all"style="width: 120px;">
+                Reiniciar
+            </button>
+            <button (click)="imc()" class="bg-[#8FD14F] text-black font-semibold py-2 px-4 rounded-md hover:bg-green-400 transition-all" style="width: 120px;">
+                Calcular
+            </button>
+        </div>
+
+         
+        <div class="text-center">
+            <p class="text-lg font-medium"style="margin-bottom: 10px;">Tu IMC es:</p>
+
+            <p id="imc" class="text-4xl font-bold text-gray-800"></p>
+            <p id ="rng" class="text-lg font-semibold" style="display: inline-block; margin-right: 5px;">Estás en rango de:</p>
+            <p id ="rango"style="display: inline-block; margin-right: 5px;"></p>
+        </div>
+
+        
+<div class="text-center"  style="margin-top: 25px;">
+    <div class="flex w-full border border-gray-500">
+        <div class="bg-yellow-400 h-4 flex-1"></div>
+        <div class="bg-green-500 h-4 flex-1"></div>
+        <div class="bg-orange-500 h-4 flex-1"></div>
+        <div class="bg-red-500 h-4 flex-1"></div>
+    </div>
+
+    <div class="flex justify-between mt-2 text-sm">
+        <div class="text-center">
+            <p class="font-semibold">Bajo</p>
+            <p>&lt;18.5</p>
+        </div>
+        <div class="text-center">
+            <p class="font-semibold">Normalidad</p>
+            <p>18.5 - 24.9</p>
+        </div>
+        <div class="text-center">
+            <p class="font-semibold">Sobrepeso</p>
+            <p>25.0 - 29.9</p>
+        </div>
+        <div class="text-center">
+            <p class="font-semibold">Obesidad</p>
+            <p>&gt;30.0</p>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+<div class="flex items-center justify-center min-h-screen bg-[#d7c1b6] relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 p-6 rounded-lg shadow-lg relative">
+        
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
+            <p class="text-center text-gray-700">Distribución por Categoría de IMC</p>
+            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
+            <p class="text-center text-gray-700">Promedio de IMC por Carrera</p>
+            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
+            <p class="text-center text-gray-700">Distribución de IMC por Edad</p>
+            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
+            <p class="text-center text-gray-700">Comparación de carreras</p>
+            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+        </div>
+    </div>
+
+    <button class="absolute bottom-4 bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 focus:outline-none">
+        Nuevos Datos
+    </button>
+
+</div>
+
+
+
+
+
+</html>

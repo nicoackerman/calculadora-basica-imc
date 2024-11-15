@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-[#d7c1b6]">
+    <div class="border border-gray-400 p-6 rounded-lg flex bg-gray-100">
+        
+        <div class="space-y-4 pr-6">
+            <h2 class="text-xl font-semibold mb-4 text-center">Ingresa los siguientes datos:</h2>
+          
+            <select id="carrera" class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+                <option value="" disabled selected>Selecciona tu carrera</option>
+                <option value="opcion1">Opción 1</option>
+                <option value="opcion2">Opción 2</option>
+                <option value="opcion3">Opción 3</option>
+                <option value="opcion4">Opción 4</option>
+                <option value="opcion5">Opción 5</option>
+                <option value="opcion6">Opción 6</option>
+                <option value="opcion7">Opción 7</option>
+            </select>
+          
+            <input type="number" placeholder="Semestre" min="0" class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+ 
+            <input type="date" placeholder="Fecha de nacimiento" class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+            
+            <div class="flex justify-center mt-4">
+                <button (click)="datos()" class="bg-teal-500 p-4 rounded-full text-white shadow-md hover:bg-teal-600 transition-all">
+                    ➔
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center">
+            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+        </div>
+    </div>
+
+</body>
+</html>

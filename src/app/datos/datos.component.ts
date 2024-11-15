@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-datos',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './datos.component.css'
 })
 export class DatosComponent {
+
+  constructor( private router: Router) {}
+
+
+  datos() {
+
+    this.router.navigateByUrl("/calculadora");
+  }
 
 }

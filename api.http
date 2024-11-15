@@ -1,0 +1,12 @@
+POST http://localhost:5000/udi/registers/
+Content-Type: application/json
+
+{
+  "fecha_nacimiento": "2000-05-15",
+  "genero_id": 1,
+  "programa_id": 10,
+  "peso_kg": 75.0,
+  "altura_m": 1.80,
+  "imc_kg_m2": 23.15,
+  "fecha": "2024-11-11"
+}

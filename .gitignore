@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+# Backend sensitive files
+.env
+
 # IDEs and editors
 .idea/
 .project

@@ -1,12 +1,14 @@
 {
   "name": "calculadora-imc",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "node --watch ./backend/index.js"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +20,12 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "zod": "^3.23.8",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {

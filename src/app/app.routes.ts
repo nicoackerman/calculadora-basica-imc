@@ -32,5 +32,11 @@ export const routes: Routes = [
     loadComponent: () => import('./calculadora/calculadora.component').then(m => m.CalculadoraComponent)
   },
 
+  { path: 'dummy',    
+    loadComponent: () => import('./calculadora/calculadora.component').then(m => m.CalculadoraComponent)
+  },
+  
+  { path: '', redirectTo: '/calculadora', pathMatch: 'full' }
+
 
 ];

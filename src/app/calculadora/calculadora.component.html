@@ -6,9 +6,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Calculadora IMC</title>
 </head>
-<body class="flex items-center justify-center h-screen bg-[#d7c1b6]">
+<body class="flex items-center justify-center min-h-screen bg-[#d7c1b6]">
+
+
+
+
     
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96 text-center relative">
+    
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-96 text-center relative">
         <h2 class="text-2xl font-semibold mb-6">Calculadora IMC</h2>
 
         <div class="space-y-4 mb-6">
@@ -69,43 +74,53 @@
     </div>
 </div>
     </div>
+
 </body>
 <div class="flex items-center justify-center min-h-screen bg-[#d7c1b6] relative">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 p-6 rounded-lg shadow-lg relative">
-        
-        <div class="bg-white p-4 rounded-lg shadow-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 p-6 rounded-lg shadow-lg relative max-w-screen-lg mx-auto">
+
+        <div class="bg-white p-4 rounded-lg shadow-md w-full">
             <h2 class="text-center font-semibold mb-4">Gráfica</h2>
-            <p class="text-center text-gray-700">Distribución por Categoría de IMC</p>
-            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+            <p class="text-center text-gray-700">IMC Promedio por Género</p>
+            <apx-chart 
+                [series]="chartSeriesGenero" 
+                [chart]="chartOptions"
+                [xaxis]="xaxisGenero"
+                class="w-full h-64">
+            </apx-chart>
         </div>
 
-        <div class="bg-white p-4 rounded-lg shadow-md">
+        <div class="bg-white p-4 rounded-lg shadow-md w-full">
             <h2 class="text-center font-semibold mb-4">Gráfica</h2>
             <p class="text-center text-gray-700">Promedio de IMC por Carrera</p>
-            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+            <apx-chart 
+                [series]="chartSeriesCarrera" 
+                [chart]="chartOptions"
+                [xaxis]="xaxisCarrera"
+                class="w-full h-64">
+            </apx-chart>
         </div>
 
-        <div class="bg-white p-4 rounded-lg shadow-md">
+        <div class="bg-white p-4 rounded-lg shadow-md w-full">
             <h2 class="text-center font-semibold mb-4">Gráfica</h2>
             <p class="text-center text-gray-700">Distribución de IMC por Edad</p>
-            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
+            <apx-chart 
+                [series]="chartSeriesEdad" 
+                [chart]="chartOptions"
+                [xaxis]="xaxisEdad"
+                class="w-full h-64">
+            </apx-chart>
         </div>
 
-        <div class="bg-white p-4 rounded-lg shadow-md">
+        <div class="bg-white p-4 rounded-lg shadow-md w-full">
             <h2 class="text-center font-semibold mb-4">Gráfica</h2>
             <p class="text-center text-gray-700">Comparación de carreras</p>
-            <img src="image.png" alt="BMI Chart" class="w-60 h-auto rounded-md" style="width: 500px; height: auto;">
         </div>
     </div>
-
-    <button class="absolute bottom-4 bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 focus:outline-none">
+    
+    <button (click)="regresar()" class="absolute bottom-4 bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 focus:outline-none">
         Nuevos Datos
     </button>
-
 </div>
-
-
-
-
 
 </html>

@@ -1,5 +1,4 @@
-
-module.exports = {
+export default {
   content: [
     './src/**/*.{html,ts}', // Ajusta las rutas según tu proyecto
     './src/app/**/*.{html,ts}', // Archivos en Angular

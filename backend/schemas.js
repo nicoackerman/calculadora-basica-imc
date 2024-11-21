@@ -45,3 +45,20 @@ export function validateRegister (input) {
 }
 
 
+const genderNameSchema = z.string({
+  required_error: "El nombre del género es obligatorio y debe ser una cadena de texto.",
+}).max(50, "El nombre del género no puede exceder los 50 caracteres.");
+
+export function validateGender(gender) {
+  return genderNameSchema.safeParse(gender);
+}
+
+const programNameSchema = z.string({
+  required_error: "El nombre del programa academico es obligatorio y debe ser una cadena de texto.",
+}).max(50, "El nombre del programa no puede exceder los 50 caracteres.");
+
+export function validateProgram(genero) {
+  return programNameSchema.safeParse(genero);
+}
+
+

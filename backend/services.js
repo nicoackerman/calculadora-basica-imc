@@ -74,4 +74,25 @@ export class RegistersService {
             return {}
         }
     }
+        static async getProgramID (programName) {
+        try { 
+            const [data, fields] = await connection.query('SELECT id FROM programas where programa = ?',[programName]);
+            return data
+        }
+        catch (error) {
+            ErrorTracker.Log(error, 'getProgramID.get');
+            return {}
+        }
+    }
+    static async getGenderID (genderName) {
+        console.log(genderName)
+        try { 
+            const [data, fields] = await connection.query('SELECT id FROM generos where genero = ?',[genderName]);
+            return data
+        }
+        catch (error) {
+            ErrorTracker.Log(error, 'getGenderID.get');
+            return {}
+        }
+    }
 }

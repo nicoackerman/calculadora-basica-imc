@@ -8,7 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "node --watch ./backend/index.js"
+    "server": "node --watch ./backend/index.js",
+    "dev": "npm run start & npm run server"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,11 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
+    "apexcharts": "^4.0.0",
+    "cors": "2.8.5",
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.11.4",
+    "ng-apexcharts": "1.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zod": "^3.23.8",

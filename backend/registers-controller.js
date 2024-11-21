@@ -40,7 +40,7 @@ export class RegistersController {
         const validation = validateGender(req.query.program);
         if (validation.success) {
             const result = await RegistersService.getProgramID(validation.data);
-            res.status(200).json(result)
+            res.status(200).json(result[0])
         } 
         else { 
             console.log({ error: validation.error.issues })
@@ -52,7 +52,7 @@ export class RegistersController {
         console.log(validation)
         if (validation.success) {
             const result = await RegistersService.getGenderID(validation.data);
-            res.status(200).json(result)
+            res.status(200).json(result[0])
         } 
         else { 
             console.log({ error: validation.error.issues })

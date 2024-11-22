@@ -19,13 +19,14 @@ import { Router } from '@angular/router';
 })
 export class CalculadoraComponent  {
 
-  constructor(private Datos:DatosCompartidosService, private enviar: EnviarDatosService, private route: Router) {this.Datos.Elegir.subscribe((elegir: boolean) => this.elegir = elegir);
-    this.Datos.selectedCarrera.subscribe((carrera: string) => this.carrera = carrera);
-    this.Datos.selectedGenero.subscribe((genero: string) => this.genero = genero);
-    this.Datos.fecha.subscribe((fecha: string) => this.fecha = fecha)}
+  constructor(private Datos:DatosCompartidosService, private enviar: EnviarDatosService, private route: Router) {
+    this.Datos.Elegir.subscribe((elegir: boolean) => this.elegir = elegir);
+    this.Datos.selectedCarrera.subscribe((carrera: number) => this.carrera = carrera);
+    this.Datos.selectedGenero.subscribe((genero: number) => this.genero = genero);
+    this.Datos.selectedfecha.subscribe((fecha: string) => this.fecha = fecha)}
 
-  carrera: string = '';
-  genero: string = '';
+  carrera!: number;
+  genero!: number;
   fecha: string = '';
   elegir!: boolean; 
 
@@ -34,6 +35,29 @@ export class CalculadoraComponent  {
   peso!: number;
   altura!: number;
   texto!: string;
+
+  chartSeries: ApexAxisChartSeries = [];
+  chartOptions: ApexChart = {
+    type: 'bar',
+    height: 350
+  };
+ 
+  chartSeriesEdad: ApexAxisChartSeries = [];
+  xaxisEdad: ApexXAxis = { categories: [] };
+  
+  chartSeriesCarrera: ApexAxisChartSeries = [];
+  xaxisCarrera: ApexXAxis = { categories: [] };
+
+
+
+  
+  
+  chartSeriesGenero: ApexAxisChartSeries = [];
+  xaxisGenero: ApexXAxis = { categories: [] };
+
+
+
+
   
   reiniciar() {
     this.route.navigateByUrl("/dummy", { skipLocationChange: true }).then(() => {
@@ -102,13 +126,14 @@ export class CalculadoraComponent  {
 
 
 registrarDatos(): void {
+  
   const registro: registroRequest = {
-    fecha: this.fecha,
-    genero: this.genero,
-    carrera: this.carrera,
-    peso: this.peso,
-    altura: this.altura,
-    imc: this.Imc,
+    fecha_nacimiento: this.fecha,
+    genero_id: this.genero,
+    programa_id: this.carrera,
+    peso_kg: this.peso,
+    altura_m: this.altura /100,
+    imc_kg_m2: this.Imc,
   }
 
 
@@ -119,31 +144,16 @@ this.enviar.registro(registro).subscribe({
     console.log(registro)
     alert('Hubo un problema al registrar los datos.');
   },
-  complete: () => console.log('Petición completada'),
+  complete: () =>{
+    console.log('Petición completada')
+    this.GraficasDatos_carreras()
+  },
 
 
 });
 
  }
 
- chartSeries: ApexAxisChartSeries = [];
- chartOptions: ApexChart = {
-   type: 'bar',
-   height: 350
- };
-
-
-
-
-
- chartSeriesEdad: ApexAxisChartSeries = [];
- xaxisEdad: ApexXAxis = { categories: [] };
- 
- chartSeriesCarrera: ApexAxisChartSeries = [];
- xaxisCarrera: ApexXAxis = { categories: [] };
- 
- chartSeriesGenero: ApexAxisChartSeries = [];
- xaxisGenero: ApexXAxis = { categories: [] };
  
  GraficasDatos_edades(): void {
    this.enviar.obtenerAverage_adulto().subscribe({
@@ -160,10 +170,13 @@ this.enviar.registro(registro).subscribe({
    this.enviar.obtenerAverage_programas().subscribe({
      next: (data) => {
        this.chartSeriesCarrera = [
-         { name: "IMC Promedio por Carrera", data: data.map((item) => item.promedio) }
+         { name: "IMC Promedio por Carrera", data: data.map((item) => item.imc_promedio) }
        ];
-       this.xaxisCarrera = { categories: data.map((item) => item.carrera) };
-     }
+       this.xaxisCarrera = { categories: data.map((item) => item.programa) };
+     },
+     error: (error) => {
+      console.warn(this.chartSeriesCarrera)
+      }
    });
  }
  

@@ -7,15 +7,15 @@ import { BehaviorSubject } from 'rxjs';
 export class DatosCompartidosService {
 
   private elegir = new BehaviorSubject<boolean>(false);
-  private fechaSubject = new BehaviorSubject<string>('');
-  private selectedGeneroSubject = new BehaviorSubject<string>('');
-  private selectedCarreraSubject = new BehaviorSubject<string>('');
+  private selectedfechaSubject = new BehaviorSubject<string>('');
+  private selectedGeneroSubject = new BehaviorSubject<number>(0);
+  private selectedCarreraSubject = new BehaviorSubject<number>(0);
 
   constructor() { }
 
 
-  get fecha() {
-    return this.fechaSubject.asObservable();
+  get selectedfecha() {
+    return this.selectedfechaSubject.asObservable();
   }
 
   get selectedGenero() {
@@ -36,15 +36,15 @@ export class DatosCompartidosService {
     this.elegir.next(elegir);
   }
   
-  setFecha(fecha: string) {
-    this.fechaSubject.next(fecha);
+  setSelectedfecha(fecha: string) {
+    this.selectedfechaSubject.next(fecha);
   }
 
-  setSelectedGenero(genero: string) {
+  setSelectedGenero(genero: number) {
     this.selectedGeneroSubject.next(genero);
   }
 
-  setSelectedCarrera(carrera: string) {
+  setSelectedCarrera(carrera: number) {
     this.selectedCarreraSubject.next(carrera);
   }
 }

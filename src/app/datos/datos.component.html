@@ -18,7 +18,7 @@
                 </option>
               </select>
 
-            <select id="genero" [(ngModel)]="selectedGenero" (ngModelChange)="actualizarGenero(selectedCarrera)"   class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600" >
+            <select id="genero" [(ngModel)]="selectedGenero" (ngModelChange)="actualizarGenero(selectedGenero)"   class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600" >
             <option value="" disabled selected hidden>Seleccione un género</option>
             <option *ngFor="let genero of generos" [value]="genero">
               {{ genero }}
@@ -26,7 +26,7 @@
           </select>
               
  
-            <input type="date"  [(ngModel)]="fecha"  (ngModelChange)="actualizarGenero(fecha)"  placeholder="Fecha de nacimiento" class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
+            <input type="date"  [(ngModel)]="fecha"  (ngModelChange)="actualizarFecha(fecha)"  placeholder="Fecha de nacimiento" class="w-full border-2 border-gray-400 rounded-md p-2 text-center focus:outline-none focus:border-gray-600">
             
             <div class="flex justify-center mt-4">
                 <button (click)="Enviar_datos()" class="bg-teal-500 p-4 rounded-full text-white shadow-md hover:bg-teal-600 transition-all">

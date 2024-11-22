@@ -1,24 +1,60 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnviarDatosService {
 
-  private apiUrl1 = 'http://localhost:3000/registers'
-  private apiUrl2 = 'http://localhost:3000/registers/genders'
-  private apiUrl3 = 'http://localhost:3000/registers/programs'
-  private apiUrl4 = 'http://localhost:3000/registers/bmi/average/adult'
-  private apiUrl5 = 'http://localhost:3000/registers/bmi/average/genders'
-  private apiUrl6 = 'http://localhost:3000/registers/bmi/average/programss'
-  
+  private apiUrl1 = 'http://localhost:5000/registers'
+  private apiUrl2 = 'http://localhost:5000/registers/genders'
+  private apiUrl3 = 'http://localhost:5000/registers/programs'
+  private apiUrl4 = 'http://localhost:5000/registers/bmi/average/adult'
+  private apiUrl5 = 'http://localhost:5000/registers/bmi/average/genders'
+  private apiUrl6 = 'http://localhost:5000/registers/bmi/average/programs'
+  private apiUrl7 = 'http://localhost:5000/registers/genders/id?gender='
+  private apiUrl8 = 'http://localhost:5000/registers/programs/id?program='
 
 
 
   constructor(private http: HttpClient) { }
 
+
+
+  actualizarApiUrl7(nuevaUrl: string): void {
+    this.apiUrl7 = nuevaUrl;
+    console.warn(this.apiUrl7)
+
+  }
+  
+  actualizarApiUrl8(nuevaUrl: string): void {
+    console.warn(this.apiUrl8)
+    this.apiUrl8 = nuevaUrl;
+  }
+  
+  generarIDGenero(gender: string): string {
+    this.apiUrl7 = 'http://localhost:5000/registers/genders/id?gender=';
+    return this.apiUrl7 + encodeURIComponent(gender);
+  }
+
+  generarIDPrograma(programa: string): string {
+    this.apiUrl8 = 'http://localhost:5000/registers/programs/id?program=';
+    return this.apiUrl8 + encodeURIComponent(programa);
+  }
+
+  obtenerIDGeneros(): Observable<number> {
+    return this.http.get<{ id: number }>(this.apiUrl7).pipe( 
+      map(response => response.id) 
+    );
+  }
+  
+  obtenerIDCarreras(): Observable<number> {
+    return this.http.get<{ id: number }>(this.apiUrl8).pipe(
+      map(response => response.id) 
+    );
+  }
 
   registro(credenciales:registroRequest): Observable<registro>{
     return this.http.post<registro>(this.apiUrl1, credenciales);  
@@ -48,8 +84,12 @@ export class EnviarDatosService {
 }
 
 
+export interface ID {
+  id: string;
+}
+
 export interface Carrera {
-  carrera: string;
+  programa: string;
 }
 
 export interface Genero {
@@ -67,19 +107,19 @@ export interface average_generos{
 }
 
 export interface average_programa{
-  carrera: string,
-  promedio: number
+  programa: string,
+  imc_promedio: number
 }
 
 
 
 export interface registroRequest{
-  fecha: string,
-  genero: string
-  carrera: string,
-  peso: number,
-  altura: number,
-  imc: number
+  fecha_nacimiento: string,
+  genero_id: number
+  programa_id: number,
+  peso_kg: number,
+  altura_m: number,
+  imc_kg_m2: number
   
 }
 

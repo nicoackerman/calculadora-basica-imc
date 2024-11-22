@@ -20,6 +20,9 @@ export class DatosComponent implements OnInit {
   selectedGenero: string = '';
   selectedCarrera: string = '';
 
+  carreraID!: number;
+  generosID!: number;
+
   constructor( private router: Router, private Registro:EnviarDatosService, private Datos:DatosCompartidosService) {}
 
 
@@ -37,15 +40,16 @@ export class DatosComponent implements OnInit {
       }
     });
 
-
     this.Registro.obtenerCarreras().subscribe({
       next: (data: Carrera[]) => {
-        this.carreras = data.map((item) => item.carrera);
+        console.log(data);
+        this.carreras = data.map((item) => item.programa);
       },
       error: (error) => {
         console.error('Error al obtener las carreras:', error);
       },
       complete: () => {
+        console.log(this.carreras);
         console.log('Petición completada');
       }
     });
@@ -53,20 +57,63 @@ export class DatosComponent implements OnInit {
   }
 
 
+
   actualizarGenero(genero: string) {
-    this.Datos.setSelectedGenero(genero);
+
+    const id_genero = this.Registro.generarIDGenero(genero)
+
+    this.Registro.actualizarApiUrl7(id_genero)
+
+    this.Registro.obtenerIDGeneros().subscribe({
+      next: (id: number) => {
+        this.generosID = id;
+      },
+      error: (error) => {
+        console.error('Error al obtener los géneros:', error);
+      },
+      complete: () => {
+        console.log(this.generosID);
+        this.Datos.setSelectedGenero(this.generosID);
+        console.log('Petición completada');
+      }
+    });
   }
+  
 
   actualizarCarrera(carrera: string) {
-    this.Datos.setSelectedCarrera(carrera);
+
+    const id_carrera = this.Registro.generarIDPrograma(carrera)
+
+    this.Registro.actualizarApiUrl8(id_carrera)
+
+
+    this.Registro.obtenerIDCarreras().subscribe({
+      next: ( id: number ) => {
+        this.carreraID = id;
+      },
+      error: (error) => {
+        console.error('Error al obtener los géneros:', error);
+      },
+      complete: () => {
+
+        console.log(this.carreraID);
+
+        this.Datos.setSelectedCarrera(this.carreraID);
+        console.log('Petición completada');
+      }
+    });
   }
 
+
+
+
   actualizarFecha(fecha: string) {
-    this.Datos.setFecha(fecha);
+    this.Datos.setSelectedfecha(fecha);
   }
 
 
   Enviar_datos(){
+
     console.log(this.selectedGenero)
     console.log(this.selectedCarrera)
     console.log(this.fecha)

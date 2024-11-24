@@ -8,12 +8,8 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-[#d7c1b6]">
 
-
-
-
     
-    
-    <div class="bg-white p-8 rounded-lg shadow-2xl w-96 text-center relative">
+    <main class="bg-white p-8 rounded-lg shadow-2xl w-96 text-center relative">
         <h2 class="text-2xl font-semibold mb-6">Calculadora IMC</h2>
 
         <div class="space-y-4 mb-6">
@@ -73,54 +69,40 @@
         </div>
     </div>
 </div>
-    </div>
+    </main>
 
 </body>
-<div class="flex items-center justify-center min-h-screen bg-[#d7c1b6] relative">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-100 p-6 rounded-lg shadow-lg relative max-w-screen-lg mx-auto">
 
-        <div class="bg-white p-4 rounded-lg shadow-md w-full">
-            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
-            <p class="text-center text-gray-700">IMC Promedio por Género</p>
-            <apx-chart 
-                [series]="chartSeriesGenero" 
-                [chart]="chartOptions"
-                [xaxis]="xaxisGenero"
-                class="w-full h-64">
-            </apx-chart>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow-md w-full">
-            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
-            <p class="text-center text-gray-700">Promedio de IMC por Carrera</p>
-            <apx-chart 
-                [series]="chartSeriesCarrera" 
-                [chart]="chartOptions"
-                [xaxis]="xaxisCarrera"
-                class="w-full h-64">
-            </apx-chart>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow-md w-full">
-            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
-            <p class="text-center text-gray-700">Distribución de IMC por Edad</p>
-            <apx-chart 
-                [series]="chartSeriesEdad" 
-                [chart]="chartOptions"
-                [xaxis]="xaxisEdad"
-                class="w-full h-64">
-            </apx-chart>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg shadow-md w-full">
-            <h2 class="text-center font-semibold mb-4">Gráfica</h2>
-            <p class="text-center text-gray-700">Comparación de carreras</p>
-        </div>
+<div class="min-h-screen flex flex-col bg-[#d7c1b6]" *ngIf="mostrarHtml">
+    <div class="flex-grow w-[1100px] bg-gray-200 rounded-lg shadow-lg p-4 flex flex-col gap-4 mx-auto">
+      <div class="flex-1 bg-white flex items-center justify-center text-white text-lg font-bold rounded">
+        <app-graficas [chartOptions]="grafica1Options"></app-graficas>
+      </div>
+      <div class="flex-1 bg-white flex items-center justify-center text-white text-lg font-bold rounded">
+        <app-graficas [chartOptions]="grafica2Options"></app-graficas>
+      </div>
+      <div class="flex-1 bg-white flex items-center justify-center text-white text-lg font-bold rounded">
+        <app-graficas [chartOptions]="grafica3Options"></app-graficas>
+      </div>
     </div>
-    
-    <button (click)="regresar()" class="absolute bottom-4 bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 focus:outline-none">
-        Nuevos Datos
+  
+    <!-- Botón con ancho limitado -->
+    <button 
+      (click)="regresar()" 
+      class="mt-auto mb-8 mx-auto w-auto px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 focus:outline-none"
+    >
+      Nuevos Datos
     </button>
-</div>
+  </div>
+  
+  
+  
+
+
+
+
 
 </html>
+
+  
+  

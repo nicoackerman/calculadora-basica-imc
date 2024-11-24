@@ -114,6 +114,18 @@ export class DatosComponent implements OnInit {
 
   Enviar_datos(){
 
+    
+    if (!this.selectedCarrera || !this.selectedGenero || !this.fecha) {
+      alert('Por favor complete todos los campos.');
+      return;
+    }
+
+
+    this.actualizarGenero(this.selectedGenero);
+    this.actualizarCarrera(this.selectedCarrera);
+    this.actualizarFecha(this.fecha);
+
+
     console.log(this.selectedGenero)
     console.log(this.selectedCarrera)
     console.log(this.fecha)

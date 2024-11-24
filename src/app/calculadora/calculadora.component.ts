@@ -5,19 +5,62 @@ import { average_adulto, average_generos, average_programa, EnviarDatosService, 
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ApexAxisChartSeries, ApexChart, ApexXAxis, ChartType } from 'ng-apexcharts';
 import { Router } from '@angular/router';
-
-
-
+import { GraficasComponent,ChartOptions } from '../graficas/graficas.component';
+import { ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 
 
 @Component({
   selector: 'app-calculadora',
   standalone: true,
-  imports: [FormsModule, NgApexchartsModule],
+  imports: [FormsModule, NgApexchartsModule, GraficasComponent, CommonModule],
   templateUrl: './calculadora.component.html',
   styleUrl: './calculadora.component.css'
 })
+
+
 export class CalculadoraComponent  {
+
+  
+
+public grafica1Options: Partial<ChartOptions> = {
+ };
+
+public grafica2Options: Partial<ChartOptions> = {
+};
+
+public grafica3Options: Partial<ChartOptions> = {
+};
+
+
+  public actualizarGrafica1(datos: number[], categorias: string[], titulo: string): void {
+    this.grafica1Options = {
+      series: [{ name: "edad", data: datos }],
+      chart: { height: 400, width:800, type: "bar" },
+      xaxis: { categories: categorias },
+      title: { text: titulo, floating: false, align: "center" }
+    };
+  }
+
+  public actualizarGrafica2(datos: number[], categorias: string[], titulo: string): void {
+    this.grafica2Options = {
+      series: [{ name: "Datos", data: datos }],
+      chart: { height: 400, width:800, type: "bar" },
+      xaxis: { categories: categorias },
+      title: { text: titulo, floating: false, align: "center" }
+    };
+  }
+
+  public actualizarGrafica3(datos: number[], categorias: string[], titulo: string): void {
+    this.grafica3Options = {
+      series: [{ name: "Datos", data: datos }],
+      chart: { height: 400, width:800, type: "bar" },
+      xaxis: { categories: categorias,position: "top" },
+      title: { text: titulo, floating: false, align: "center" }
+
+    };
+  }
+
 
   constructor(private Datos:DatosCompartidosService, private enviar: EnviarDatosService, private route: Router) {
     this.Datos.Elegir.subscribe((elegir: boolean) => this.elegir = elegir);
@@ -25,6 +68,8 @@ export class CalculadoraComponent  {
     this.Datos.selectedGenero.subscribe((genero: number) => this.genero = genero);
     this.Datos.selectedfecha.subscribe((fecha: string) => this.fecha = fecha)}
 
+
+  mostrarHtml: boolean = false
   carrera!: number;
   genero!: number;
   fecha: string = '';
@@ -35,26 +80,6 @@ export class CalculadoraComponent  {
   peso!: number;
   altura!: number;
   texto!: string;
-
-  chartSeries: ApexAxisChartSeries = [];
-  chartOptions: ApexChart = {
-    type: 'bar',
-    height: 350
-  };
- 
-  chartSeriesEdad: ApexAxisChartSeries = [];
-  xaxisEdad: ApexXAxis = { categories: [] };
-  
-  chartSeriesCarrera: ApexAxisChartSeries = [];
-  xaxisCarrera: ApexXAxis = { categories: [] };
-
-
-
-  
-  
-  chartSeriesGenero: ApexAxisChartSeries = [];
-  xaxisGenero: ApexXAxis = { categories: [] };
-
 
 
 
@@ -111,8 +136,14 @@ export class CalculadoraComponent  {
         resultrango.innerHTML = ''
         const textNode = document.createTextNode(this.texto);
         resultrango.appendChild(textNode);
-        this.registrarDatos()
-
+        console.log(this.elegir)
+        if (this.elegir){
+          this.mostrarHtml = true
+          this.GraficasDatos_edades()
+          this.GraficasDatos_carreras()
+          this.GraficasDatos_generos()
+          this.registrarDatos()
+        }
       }
 
     }
@@ -120,6 +151,7 @@ export class CalculadoraComponent  {
 
       resultDiv!.innerHTML = ''
       resultrango!.innerHTML = ''
+
 
     }
 } 
@@ -145,53 +177,83 @@ this.enviar.registro(registro).subscribe({
     alert('Hubo un problema al registrar los datos.');
   },
   complete: () =>{
+    console.log(registro)
     console.log('Petición completada')
-    this.GraficasDatos_carreras()
+    
   },
-
-
 });
 
  }
 
- 
  GraficasDatos_edades(): void {
-   this.enviar.obtenerAverage_adulto().subscribe({
-     next: (data) => {
-       this.chartSeriesEdad = [
-         { name: "IMC Promedio por Edad", data: data.map((item) => item.promedio) }
-       ];
-       this.xaxisEdad = { categories: data.map((item) => item.edad.toString()) };
-     }
-   });
- }
- 
- GraficasDatos_carreras(): void {
-   this.enviar.obtenerAverage_programas().subscribe({
-     next: (data) => {
-       this.chartSeriesCarrera = [
-         { name: "IMC Promedio por Carrera", data: data.map((item) => item.imc_promedio) }
-       ];
-       this.xaxisCarrera = { categories: data.map((item) => item.programa) };
-     },
-     error: (error) => {
-      console.warn(this.chartSeriesCarrera)
-      }
-   });
- }
- 
- GraficasDatos_generos(): void {
-   this.enviar.obtenerAverage_generos().subscribe({
-     next: (data) => {
-       this.chartSeriesGenero = [
-         { name: "IMC Promedio por Género", data: data.map((item) => item.promedio) }
-       ];
-       this.xaxisGenero = { categories: data.map((item) => item.genero) };
-     }
-   });
- }
+  let datos: number[] = [];
+  let datos1: string[] = [];
 
 
+  this.enviar.obtenerAverage_adulto().subscribe({
+    next: (data) => {
+      datos = datos.concat(data.map((item) => parseFloat(item.imc_promedio.toFixed(2))));
+      console.log(datos); 
+      datos1 = datos1.concat(data.map((item) => item.edad))
+      console.log(datos1)
+    },
+    error: (err) => {
+      console.error('Error al obtener los datos:', err);
+    },
+
+    complete: () =>{
+      this.actualizarGrafica1(datos,datos1,"IMC promedio por edad (a partir de los 19 años)")
+    }
+  });
+}
+
+
+
+
+GraficasDatos_carreras(): void {
+  let datos: number[] = [];
+  let datos1: string[] = [];
+
+
+  this.enviar.obtenerAverage_programas().subscribe({
+    next: (data) => {
+      datos = datos.concat(data.map((item) => parseFloat(item.imc_promedio.toFixed(2))));
+      console.log(datos); 
+      datos1 = datos1.concat(data.map((item) => item.programa))
+      console.log(datos1)
+    },
+    error: (err) => {
+      console.error('Error al obtener los datos:', err);
+    },
+
+    complete: () =>{
+      this.actualizarGrafica2(datos,datos1,"iMC promedio de cada carrera académica ")
+    }
+  });
+}
+
+
+GraficasDatos_generos(): void {
+  let datos: number[] = [];
+  let datos1: string[] = [];
+
+
+  this.enviar.obtenerAverage_generos().subscribe({
+    next: (data) => {
+      datos = datos.concat(data.map((item) => parseFloat(item.imc_promedio.toFixed(2))));
+      console.log(datos); 
+      datos1 = datos1.concat(data.map((item) => item.genero))
+      console.log(datos1)
+    },
+    error: (err) => {
+      console.error('Error al obtener los datos:', err);
+    },
+
+    complete: () =>{
+      this.actualizarGrafica3(datos,datos1,"IMC promedio por género")
+    }
+  });
+}
 
  regresar(): void{
   this.route.navigateByUrl("/datos");

@@ -11,7 +11,7 @@ export class EnviarDatosService {
   private apiUrl1 = 'http://localhost:5000/registers'
   private apiUrl2 = 'http://localhost:5000/registers/genders'
   private apiUrl3 = 'http://localhost:5000/registers/programs'
-  private apiUrl4 = 'http://localhost:5000/registers/bmi/average/adult'
+  private apiUrl4 = 'http://localhost:5000/registers/bmi/average/adults'
   private apiUrl5 = 'http://localhost:5000/registers/bmi/average/genders'
   private apiUrl6 = 'http://localhost:5000/registers/bmi/average/programs'
   private apiUrl7 = 'http://localhost:5000/registers/genders/id?gender='
@@ -97,13 +97,13 @@ export interface Genero {
 }
 
 export interface average_adulto{
-  edad: number,
-  promedio: number
+  edad: string,
+  imc_promedio: number
 }
 
 export interface average_generos{
   genero: string,
-  promedio: number
+  imc_promedio: number
 }
 
 export interface average_programa{

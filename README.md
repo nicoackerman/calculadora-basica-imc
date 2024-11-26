@@ -17,8 +17,46 @@ CalculadoraImc is a web application for calculating Body Mass Index (BMI) and st
 - Angular CLI (version 18.1.4)
 - MySQL Server
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Available Scripts
+
+In the project directory, you can run the following scripts:
+
+### Development Server
+```bash
+ng serve
+```
+Runs the app in development mode. Open [http://localhost:4200](http://localhost:4200) to view it in the browser. The page will reload if you make edits.
+
+### Build
+```bash
+ng build
+```
+Builds the app for production to the `dist/` directory. It correctly bundles Angular in production mode and optimizes the build for the best performance.
+
+### Run Unit Tests
+```bash
+ng test
+```
+Launches the test runner in interactive watch mode using [Karma](https://karma-runner.github.io).
+
+### Generate Code
+```bash
+ng generate component component-name
+```
+Generates a new component. You can also use:
+- `ng generate directive|pipe|service|class|guard|interface|enum|module`
+
+### End-to-End Testing
+```bash
+ng e2e
+```
+Runs end-to-end tests. Note: You need to first add a package that implements end-to-end testing capabilities.
+
+### Additional CLI Commands
+```bash
+ng help
+```
+Shows all available Angular CLI commands and their usage.
 
 ## Database Setup
 Create the database using the following SQL script:
@@ -68,22 +106,71 @@ CREATE TABLE registros_imc (
 );
 ```
 
-## Code scaffolding
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project Structure
+```
+CalculadoraImc/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── ...
+│   ├── assets/
+│   ├── environments/
+│   └── ...
+│
+├── angular.json
+├── package.json
+└── README.md
+```
 
-## Build
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/CalculadoraImc.git
+cd CalculadoraImc
+```
 
-## Running end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Install Dependencies
+```bash
+npm install
+```
+
+## Configuration
+1. Configure database connection in the project settings
+2. Ensure MySQL server is running
+3. Create the database using the provided SQL script
+
+## Running the Application
+```bash
+ng serve
+```
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
 
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Contributing
-Contributions are welcome. Please read the contribution guidelines before submitting a pull request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Troubleshooting
+- Ensure all prerequisites are installed
+- Check database connection settings
+- Verify Angular CLI and Node.js versions
 
 ## License
+This project is licensed under [MIT License / Your Chosen License]
+
+## Contact
+[nicoackerman]
+[zabaladuran]
+[RonaldFNova]
+[jeferMLG]
+
+[Your Email or Contact Information]

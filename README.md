@@ -1,4 +1,4 @@
-# CalculadoraImc
+# Calculadora Imc
 ![FireShot Capture 004 - calculadora imc - localhost](https://github.com/user-attachments/assets/79542b78-2339-4285-8f6b-8f3b4d7afc6d)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
@@ -8,10 +8,8 @@ CalculadoraImc is a web application for calculating Body Mass Index (BMI) and st
 
 ## Key Features
 - Body Mass Index (BMI) calculation
-- User data registration
-- Support for multiple academic programs
-- Gender classification
-- MySQL database record storage
+- User data registration using MySQL database (acadmic program, gender and birth date)
+- Global Data Visualization by acadmic program, gender and birth date
 
 ## Prerequisites
 - Node.js (version 18 or higher)
@@ -107,25 +105,6 @@ CREATE TABLE registros_imc (
 );
 ```
 
-## Project Structure
-```
-CalculadoraImc/
-│
-├── src/
-│   ├── app/
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── models/
-│   │   └── ...
-│   ├── assets/
-│   ├── environments/
-│   └── ...
-│
-├── angular.json
-├── package.json
-└── README.md
-```
-
 ## Installation
 
 ### Clone the Repository
@@ -146,17 +125,12 @@ npm install
 
 ## Running the Application
 ```bash
-ng serve
+ng start
 ```
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
-
-## Further help
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Contact
 [nicoackerman]
 [zabaladuran]
 [RonaldFNova]
 [jeferMLG]
-
-[Your Email or Contact Information]

@@ -59,8 +59,8 @@ CREATE TABLE registros_imc (
 );
 ```
 
-## Contact
-[nicoackerman]
-[zabaladuran]
-[RonaldFNova]
-[jeferMLG]
+## Contact Us
+[nicoackerman](https://github.com/nicoackerman)
+[zabaladuran](https://github.com/zabaladuran)
+[RonaldFNova](https://github.com/RonaldFNova)
+[jeferMLG](https://github.com/jeferMLG)

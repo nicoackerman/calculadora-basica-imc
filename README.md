@@ -13,50 +13,7 @@ CalculadoraImc is a web application for calculating Body Mass Index (BMI) and st
 - Angular CLI (version 18.1.4)
 - MySQL Server
 
-## Available Scripts
-
-In the project directory, you can run the following scripts:
-
-### Development Server
-```bash
-ng serve
-```
-Runs the app in development mode. Open [http://localhost:4200](http://localhost:4200) to view it in the browser. The page will reload if you make edits.
-
-### Build
-```bash
-ng build
-```
-Builds the app for production to the `dist/` directory. It correctly bundles Angular in production mode and optimizes the build for the best performance.
-
-### Run Unit Tests
-```bash
-ng test
-```
-Launches the test runner in interactive watch mode using [Karma](https://karma-runner.github.io).
-
-### Generate Code
-```bash
-ng generate component component-name
-```
-Generates a new component. You can also use:
-- `ng generate directive|pipe|service|class|guard|interface|enum|module`
-
-### End-to-End Testing
-```bash
-ng e2e
-```
-Runs end-to-end tests. Note: You need to first add a package that implements end-to-end testing capabilities.
-
-### Additional CLI Commands
-```bash
-ng help
-```
-Shows all available Angular CLI commands and their usage.
-
-## Database Setup
-Create the database using the following SQL script:
-
+## Database used
 ```sql
 CREATE DATABASE udi_imc;
 USE udi_imc;
@@ -101,30 +58,6 @@ CREATE TABLE registros_imc (
     FOREIGN KEY (programa_id) REFERENCES programas(id)
 );
 ```
-
-## Installation
-
-### Clone the Repository
-```bash
-git clone https://github.com/your-username/CalculadoraImc.git
-cd CalculadoraImc
-```
-
-### Install Dependencies
-```bash
-npm install
-```
-
-## Configuration
-1. Configure database connection in the project settings
-2. Ensure MySQL server is running
-3. Create the database using the provided SQL script
-
-## Running the Application
-```bash
-ng start
-```
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any source files.
 
 ## Contact
 [nicoackerman]

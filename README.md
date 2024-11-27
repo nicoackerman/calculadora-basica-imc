@@ -1,5 +1,6 @@
 # Calculadora Imc
 ![FireShot Capture 004 - calculadora imc - localhost](https://github.com/user-attachments/assets/79542b78-2339-4285-8f6b-8f3b4d7afc6d)
+![FireShot Capture 006 - calculadora imc - localhost](https://github.com/user-attachments/assets/dfa1b79b-e9ab-466e-a913-9e1d2d9b93fe)
 
 CalculadoraImc is a web open-source application for calculating Body Mass Index (BMI) and storing user records. The application is designed for university students, allowing registration of information such as date of birth, gender, academic program, weight, and height.
 

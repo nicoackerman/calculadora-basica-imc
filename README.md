@@ -1,4 +1,5 @@
 # CalculadoraImc
+![FireShot Capture 004 - calculadora imc - localhost](https://github.com/user-attachments/assets/79542b78-2339-4285-8f6b-8f3b4d7afc6d)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
 

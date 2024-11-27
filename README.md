@@ -152,21 +152,6 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 ## Further help
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## Troubleshooting
-- Ensure all prerequisites are installed
-- Check database connection settings
-- Verify Angular CLI and Node.js versions
-
-## License
-This project is licensed under [MIT License / Your Chosen License]
-
 ## Contact
 [nicoackerman]
 [zabaladuran]

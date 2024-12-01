@@ -8,14 +8,14 @@ import { map } from 'rxjs/operators';
 })
 export class EnviarDatosService {
 
-  private apiUrl1 = 'http://localhost:5000/registers'
-  private apiUrl2 = 'http://localhost:5000/registers/genders'
-  private apiUrl3 = 'http://localhost:5000/registers/programs'
-  private apiUrl4 = 'http://localhost:5000/registers/bmi/average/adults'
-  private apiUrl5 = 'http://localhost:5000/registers/bmi/average/genders'
-  private apiUrl6 = 'http://localhost:5000/registers/bmi/average/programs'
-  private apiUrl7 = 'http://localhost:5000/registers/genders/id?gender='
-  private apiUrl8 = 'http://localhost:5000/registers/programs/id?program='
+  private apiUrl1 = 'https://api-calculadora-imc.vercel.app/registers'
+  private apiUrl2 = 'https://api-calculadora-imc.vercel.app/registers/genders'
+  private apiUrl3 = 'https://api-calculadora-imc.vercel.app/registers/programs'
+  private apiUrl4 = 'https://api-calculadora-imc.vercel.app/registers/bmi/average/adults'
+  private apiUrl5 = 'https://api-calculadora-imc.vercel.app/registers/bmi/average/genders'
+  private apiUrl6 = 'https://api-calculadora-imc.vercel.app/registers/bmi/average/programs'
+  private apiUrl7 = 'https://api-calculadora-imc.vercel.app/registers/genders/id?gender='
+  private apiUrl8 = 'https://api-calculadora-imc.vercel.app/registers/programs/id?program='
 
 
 
@@ -35,12 +35,12 @@ export class EnviarDatosService {
   }
   
   generarIDGenero(gender: string): string {
-    this.apiUrl7 = 'http://localhost:5000/registers/genders/id?gender=';
+    this.apiUrl7 = 'https://api-calculadora-imc.vercel.app/registers/genders/id?gender=';
     return this.apiUrl7 + encodeURIComponent(gender);
   }
 
   generarIDPrograma(programa: string): string {
-    this.apiUrl8 = 'http://localhost:5000/registers/programs/id?program=';
+    this.apiUrl8 = 'https://api-calculadora-imc.vercel.app/registers/programs/id?program=';
     return this.apiUrl8 + encodeURIComponent(programa);
   }
 
